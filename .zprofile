@@ -6,4 +6,4 @@ eval "$(pyenv init --path)"
 
 
 # Added by Toolbox App
-export PATH="$PATH:/Users/mascah/Library/Application Support/JetBrains/Toolbox/scripts"
+#export PATH="$PATH:/Users/mascah/Library/Application Support/JetBrains/Toolbox/scripts"
