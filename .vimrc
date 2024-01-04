@@ -28,8 +28,9 @@ Plug 'ycm-core/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvie/vim-flake8'
-Plug 'preservim/nerdtree' |
-            \ Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'preservim/nerdtree' 
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -67,14 +68,16 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "python with virtualenv support
-python3 << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
+" python3 << EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+"   project_base_dir = os.environ['VIRTUAL_ENV']
+"   activate_this = os.path.join(project_base_dir, 'bin/activate')
+"   # execfile(activate_this, dict(__file__=activate_this))
+"   # exec(open(activate_this).read())
+"   exec(open(activate_this, "rb").read(), dict(__file__=activate_this))
+" EOF
 
 " Syntastic
 let python_highlight_all=1
@@ -92,11 +95,19 @@ let NERDTreeIgnore=['\.pyc$']
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-" what does this do? nnoremap <C-f> :NERDTreeFind<CR>
+" nnoremap <C-f> :NERDTreeFind<CR>
 
-map  <C-l> :tabn<CR>
-map  <C-h> :tabp<CR>
-map  <C-n> :tabnew<CR>
+" Start NERDTree when Vim is started without file arguments.
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+"map  <C-l> :tabn<CR>
+"map  <C-h> :tabp<CR>
+"map  <C-n> :tabnew<CR>
 
 " - Popup window (anchored to the bottom of the current window)
 let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0 } }

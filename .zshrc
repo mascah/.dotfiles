@@ -1,3 +1,5 @@
+eval "$(direnv hook zsh)"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -77,7 +79,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rbenv pyenv zsh-syntax-highlighting zsh-autosuggestions )
+plugins=(git kubectl aws rbenv pyenv zsh-syntax-highlighting zsh-autosuggestions )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -127,6 +129,24 @@ if [ -x "$(command -v exa)" ]; then
     alias la="exa --icons --long --all --group"
 fi
 
-alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 export EXA_COLORS="da=36:uu=32:gu=32"
+
+# 1Password CLI completion
+eval "$(op completion zsh)"; compdef _op op
+
+# FZF
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude Library --exclude .git/ --exclude .pyenv/'
+
+# PG
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+
+
+alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias f='vim "$(fzf)"'
+alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
+alias ge=great_expectations
+alias tg=terragrunt
+
