@@ -1,3 +1,6 @@
 cask "splice"
+cask "obs"
+cask "native-access"
+cask "spitfire-audio"
 
 mas "OneDrive", id: 823766827

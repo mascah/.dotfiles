@@ -6,6 +6,24 @@
         "options": {
           "full_name": "splice"
         }
+      },
+      "obs": {
+        "version": "30.0.2",
+        "options": {
+          "full_name": "obs"
+        }
+      },
+      "native-access": {
+        "version": "3.8.0",
+        "options": {
+          "full_name": "native-access"
+        }
+      },
+      "spitfire-audio": {
+        "version": "3.4.10,1695772800",
+        "options": {
+          "full_name": "spitfire-audio"
+        }
       }
     },
     "mas": {

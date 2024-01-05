@@ -10,6 +10,7 @@ cask "spotify"
 cask "nordvpn"
 cask "zoom"
 cask "logi-options-plus"
+cask "google-chrome"
 
 cask "jetbrains-toolbox"
 cask "snowflake-snowsql"
