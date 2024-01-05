@@ -1,0 +1,78 @@
+{
+  "entries": {
+    "tap": {
+      "homebrew/bundle": {
+        "revision": "e4798d8075e1a793f065be3e5e1674ec09193d17"
+      },
+      "heroku/brew": {
+        "revision": "379bc49cf928a18cb0e7dcad4946278ff831e420"
+      }
+    },
+    "cask": {
+      "1password-cli": {
+        "version": "2.24.0",
+        "options": {
+          "full_name": "1password/tap/1password-cli"
+        }
+      },
+      "visual-studio-code": {
+        "version": "1.85.1",
+        "options": {
+          "full_name": "visual-studio-code"
+        }
+      },
+      "rectangle": {
+        "version": "0.75",
+        "options": {
+          "full_name": "rectangle"
+        }
+      },
+      "spotify": {
+        "version": "1.2.26.1187,36b715a1,272",
+        "options": {
+          "full_name": "spotify"
+        }
+      },
+      "nordvpn": {
+        "version": "8.14.6",
+        "options": {
+          "full_name": "nordvpn"
+        }
+      },
+      "zoom": {
+        "version": "5.17.1.27701",
+        "options": {
+          "full_name": "zoom"
+        }
+      },
+      "logi-options-plus": {
+        "version": "1.60.496306",
+        "options": {
+          "full_name": "logi-options-plus"
+        }
+      }
+    },
+    "mas": {
+      "1Password for Safari": {
+        "id": "1569813296",
+        "version": "2.19.0"
+      },
+      "DuckDuckGo Privacy for Safari": {
+        "id": "1482920575",
+        "version": "1.8.0"
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "sonoma": {
+        "HOMEBREW_VERSION": "4.2.2",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "api",
+        "CLT": "15.1.0.0.1.1700200546",
+        "Xcode": "15.1",
+        "macOS": "14.2.1"
+      }
+    }
+  }
+}
