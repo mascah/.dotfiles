@@ -20,15 +20,22 @@ nnoremap <space> za
 set nocompatible     " required
 filetype off         " required?
 
+" Auto install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin()
 
 Plug 'tmhedberg/SimpylFold'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'ycm-core/YouCompleteMe'
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-scripts/indentpython.vim'
+"Plug 'ycm-core/YouCompleteMe'
+"Plug 'vim-syntastic/syntastic'
+"Plug 'nvie/vim-flake8'
 Plug 'ryanoasis/vim-devicons'
-Plug 'nvie/vim-flake8'
-Plug 'preservim/nerdtree' 
+Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -64,8 +71,8 @@ set laststatus=2
 let g:Powerline_symbols = "fancy"
 
 "YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"let g:ycm_autoclose_preview_window_after_completion=1
+"map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "python with virtualenv support
 " python3 << EOF
@@ -80,15 +87,15 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " EOF
 
 " Syntastic
-let python_highlight_all=1
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"let python_highlight_all=1
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 " Nerdtree
 let NERDTreeIgnore=['\.pyc$']

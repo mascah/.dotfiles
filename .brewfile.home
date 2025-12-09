@@ -2,5 +2,15 @@ cask "splice"
 cask "obs"
 cask "native-access"
 cask "spitfire-audio"
+cask "1password/tap/1password-cli"
+cask "spotify"
+cask "nordvpn"
+cask "logi-options-plus"
+
+brew "mas"
+brew "ta-lib"
 
 mas "OneDrive", id: 823766827
+mas "1Password for Safari", id: 1569813296
+mas "DuckDuckGo Privacy for Safari", id: 1482920575
+mas "Dark Reader for Safari", id: 1438243180  
