@@ -9,6 +9,12 @@ window-padding-x = 8
 window-padding-y = 6
 window-padding-balance = true
 
+# Brighten the dim grays. GitHub Dark sets palette 8 (bright black, used for
+# comments / secondary UI text like the Claude Code banner) to a very dark
+# #484f58 — bumping it makes that text legible without affecting other colors.
+foreground = #f0f6fc
+palette = 8=#9ba3ae
+
 # --- macOS --------------------------------------------------------------------
 # Treat left option as Alt so zsh alt+f/alt+b word motion works.
 macos-option-as-alt = left
