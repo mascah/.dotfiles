@@ -1,0 +1,42 @@
+# Ghostty config — reload with cmd+shift+, or it auto-reloads on save.
+# Docs: `ghostty +show-config --default --docs` prints every option with comments.
+
+# --- Appearance ---------------------------------------------------------------
+theme = GitHub Dark
+font-family = JetBrainsMono Nerd Font
+font-size = 12
+window-padding-x = 8
+window-padding-y = 6
+window-padding-balance = true
+
+# --- macOS --------------------------------------------------------------------
+# Treat left option as Alt so zsh alt+f/alt+b word motion works.
+macos-option-as-alt = left
+macos-titlebar-style = tabs
+window-save-state = always
+quit-after-last-window-closed = false
+
+# --- Clipboard / OSC52 (the reason you're here) ------------------------------
+clipboard-write = allow
+clipboard-read = ask
+clipboard-paste-protection = true
+clipboard-trim-trailing-spaces = true
+copy-on-select = false
+
+# --- Shell integration -------------------------------------------------------
+# `detect` autodetects zsh/bash/fish and injects integration without touching
+# your .zshrc. ssh-terminfo copies xterm-ghostty terminfo to remotes on first
+# connect — this is what makes vim/tmux behave correctly over SSH. ssh-env
+# forwards COLORTERM etc. so truecolor works remotely.
+shell-integration = detect
+shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo
+
+# --- Cursor & scrollback -----------------------------------------------------
+cursor-style = block
+cursor-style-blink = false
+mouse-hide-while-typing = true
+scrollback-limit = 100000
+
+# --- Keybinds ----------------------------------------------------------------
+# Quick terminal (iTerm-style hotkey dropdown). Drop this if you don't want it.
+keybind = global:cmd+grave_accent=toggle_quick_terminal
