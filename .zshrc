@@ -18,7 +18,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git kubectl aws rbenv nvm pyenv)
+plugins=(git kubectl aws rbenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -26,6 +26,9 @@ source $ZSH/oh-my-zsh.sh
 
 # direnv (must be after instant prompt to avoid p10k warnings)
 eval "$(direnv hook zsh)"
+
+# pyenv shell function & completions (PYENV_ROOT/shims/PATH are set in .zprofile)
+eval "$(pyenv init -)"
 
 if [ -x "$(command -v eza)" ]; then
     alias ls="eza --icons"
@@ -40,26 +43,9 @@ eval "$(op completion zsh)"; compdef _op op
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude Library --exclude .git/ --exclude .pyenv/'
 
-# PG
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
-
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias f='vim "$(fzf)"'
-alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 alias tg=terragrunt
-
-export PATH="/Users/mascah/.local/bin:$PATH"
-export PIPX_DEFAULT_PYTHON="$HOME/.pyenv/versions/3.12.5/bin/python"
-
-# pnpm
-export PNPM_HOME="/Users/mascah/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
 # These must be sourced after oh-my-zsh and all other plugins
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -67,3 +53,6 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
+
+# bun completions
+[ -s "/Users/mascah/.bun/_bun" ] && source "/Users/mascah/.bun/_bun"
