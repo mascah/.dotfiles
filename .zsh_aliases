@@ -1,0 +1,10 @@
+alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias f='vim "$(fzf)"'
+alias tg=terragrunt
+if [ -x "$(command -v eza)" ]; then
+	alias ls="eza --icons"
+	alias la="eza --icons --long --all --group"
+fi
+if [ -f "$HOME/.zsh_aliases.local" ]; then
+	source "$HOME/.zsh_aliases.local"
+fi

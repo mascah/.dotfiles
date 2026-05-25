@@ -30,11 +30,6 @@ eval "$(direnv hook zsh)"
 # pyenv shell function & completions (PYENV_ROOT/shims/PATH are set in .zprofile)
 eval "$(pyenv init -)"
 
-if [ -x "$(command -v eza)" ]; then
-    alias ls="eza --icons"
-    alias la="eza --icons --long --all --group"
-fi
-
 export EZA_COLORS="da=36:uu=32:gu=32"
 
 # 1Password CLI completion
@@ -42,10 +37,6 @@ eval "$(op completion zsh)"; compdef _op op
 
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude Library --exclude .git/ --exclude .pyenv/'
-
-alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias f='vim "$(fzf)"'
-alias tg=terragrunt
 
 # These must be sourced after oh-my-zsh and all other plugins
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -56,3 +47,7 @@ source ~/.p10k.zsh
 
 # bun completions
 [ -s "/Users/mascah/.bun/_bun" ] && source "/Users/mascah/.bun/_bun"
+
+if [ -f "$HOME/.zsh_aliases" ]; then
+    source "$HOME/.zsh_aliases"
+fi
