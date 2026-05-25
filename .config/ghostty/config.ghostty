@@ -45,4 +45,4 @@ scrollback-limit = 100000
 
 # --- Keybinds ----------------------------------------------------------------
 # Quick terminal (iTerm-style hotkey dropdown). Drop this if you don't want it.
-keybind = global:cmd+grave_accent=toggle_quick_terminal
+keybind = global:cmd+shift+grave_accent=toggle_quick_terminal
