@@ -1,7 +1,9 @@
-# This is Git's per-user configuration file.
+# Shared across machines. Email and machine-specific settings live in the
+# untracked ~/.gitconfig.local (see .dotfiles_readme.md).
 [user]
-# Please adapt and uncomment the following lines:
 	name = Mike Ascah
-	email = mike.ascah@outlook.com
-[credential "https://git.heroku.com"]
-	helper = !heroku git:credentials
+	# Refuse to commit until ~/.gitconfig.local (or a repo) sets an email,
+	# so no machine falls back to a guessed or wrong address.
+	useConfigOnly = true
+[include]
+	path = ~/.gitconfig.local

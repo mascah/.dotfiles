@@ -1,6 +1,4 @@
-cask "1password/tap/1password-cli"
 cask "claude-code"
-cask "docker"
 cask "google-chrome"
 cask "rectangle"
 cask "visual-studio-code"

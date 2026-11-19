@@ -8,6 +8,9 @@
 #      then `op read op://Personal/id_ed25519/notesPlain > ~/.ssh/id_ed25519`
 #      after the brew step below. See .dotfiles_readme.md for the full flow.)
 #
+# Usage: ~/.dotfiles_bootstrap.sh [--personal]
+#   --personal also installs .brewfile.personal (1Password CLI, Docker).
+#
 # This script is idempotent — safe to re-run.
 
 set -euo pipefail
@@ -52,6 +55,9 @@ fi
 
 # ---- Homebrew bundles ----
 brew bundle --file="$HOME/.brewfile"
+if [[ "${1:-}" == "--personal" ]]; then
+  brew bundle --file="$HOME/.brewfile.personal"
+fi
 
 # ---- oh-my-zsh (do not overwrite the checked-out .zshrc) ----
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
