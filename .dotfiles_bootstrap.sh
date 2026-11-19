@@ -51,8 +51,7 @@ if ! config checkout 2>/dev/null; then
 fi
 
 # ---- Homebrew bundles ----
-brew bundle --file="$HOME/.brewfile.home"
-brew bundle --file="$HOME/.brewfile.dev"
+brew bundle --file="$HOME/.brewfile"
 
 # ---- oh-my-zsh (do not overwrite the checked-out .zshrc) ----
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
@@ -66,6 +65,11 @@ if [[ ! -f "$HOME/.vim/autoload/plug.vim" ]]; then
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 vim +PlugInstall +qall
+
+# ---- Language servers not covered by brew (pyright, tsserver are in .brewfile) ----
+if command -v rustup >/dev/null 2>&1; then
+  rustup component add rust-analyzer
+fi
 
 cat <<'EOM'
 
