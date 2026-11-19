@@ -3,3 +3,5 @@
 # Please adapt and uncomment the following lines:
 	name = Mike Ascah
 	email = mike.ascah@outlook.com
+[credential "https://git.heroku.com"]
+	helper = !heroku git:credentials

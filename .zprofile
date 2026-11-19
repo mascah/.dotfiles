@@ -27,3 +27,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Added by platform-django/bin/setup
+command -v mise >/dev/null && eval "$(mise activate zsh --shims)"

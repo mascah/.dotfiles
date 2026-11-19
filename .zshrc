@@ -18,7 +18,11 @@ export ZSH="$HOME/.oh-my-zsh"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git kubectl aws rbenv)
+plugins=(git kubectl aws nvm pyenv)
+
+NVM_HOMEBREW="/opt/homebrew/opt/nvm"
+zstyle ':omz:plugins:nvm' autoload yes
+zstyle ':omz:plugins:nvm' silent-autoload yes
 
 source $ZSH/oh-my-zsh.sh
 
@@ -33,10 +37,11 @@ eval "$(pyenv init -)"
 export EZA_COLORS="da=36:uu=32:gu=32"
 
 # 1Password CLI completion
-eval "$(op completion zsh)"; compdef _op op
+# eval "$(op completion zsh)"; compdef _op op
 
 # FZF
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude Library --exclude .git/ --exclude .pyenv/'
+source <(fzf --zsh)   # Ctrl-R fuzzy history, Ctrl-T file paths, Alt-C cd
 
 # These must be sourced after oh-my-zsh and all other plugins
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -51,3 +56,6 @@ source ~/.p10k.zsh
 if [ -f "$HOME/.zsh_aliases" ]; then
     source "$HOME/.zsh_aliases"
 fi
+
+# Added by platform-django/bin/setup
+command -v mise >/dev/null && eval "$(mise activate zsh)"
