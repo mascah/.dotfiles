@@ -59,3 +59,6 @@ fi
 
 # Added by platform-django/bin/setup
 command -v mise >/dev/null && eval "$(mise activate zsh)"
+
+# Machine-local settings and secrets, not tracked in the dotfiles repo. Last so it can override.
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
