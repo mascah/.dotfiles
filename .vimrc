@@ -95,8 +95,8 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
-" fzf — popup window anchored to the bottom of the current window
-let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0 } }
+" fzf — popup anchored to the bottom of the editor ('relative': v:true shrinks the popup in Vim 9.2)
+let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.6, 'yoffset': 1.0 } }
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :Rg<CR>
 nnoremap <leader>b :Buffers<CR>
